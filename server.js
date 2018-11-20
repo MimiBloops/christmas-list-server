@@ -28,7 +28,9 @@ app.use(bodyParser.json());
 var clientRoute = require('./api/routes/clientRoute.js'); //importing route
 var buyerRoute = require('./api/routes/buyerRoute.js');
 var giftRoute = require('./api/routes/giftRoute.js');
+var accessoryRoute = require('./api/routes/accessoryRoute.js');
 
 clientRoute(app); //register the route
 buyerRoute(app);
 giftRoute(app);
+accessoryRoute(app);
