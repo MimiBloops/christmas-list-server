@@ -1,6 +1,6 @@
 'use strict';
 module.exports = function (app) {
-    var client = require('../controller/client.js');
+    var client = require('../controller/clientController.js');
 
     app.route('/client')
         .get(client.list_all_client)

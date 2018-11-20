@@ -1,6 +1,6 @@
 'use strict';
 
-var Client = require('../model/client.js');
+var Client = require('../model/clientModel.js');
 
 exports.list_all_client = function (req, res) {
     Client.getAllClient(function (err, client) {
