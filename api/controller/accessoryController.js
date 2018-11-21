@@ -55,3 +55,11 @@ exports.delete_a_accessory = function (req, res) {
         res.json({ message: 'Accessory successfully deleted' });
     });
 };
+
+exports.get_accessory_category = function (req, res) {
+    Accessory.getAccessoryCategory(req.params.accessoryId, function (err, accessory) {
+        if (err)
+            res.send(err);
+        res.json(accessory);
+    });
+};

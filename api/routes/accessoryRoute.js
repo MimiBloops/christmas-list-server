@@ -10,4 +10,7 @@ module.exports = function (app) {
         .get(accessory.read_a_accessory)
         .put(accessory.update_a_accessory)
         .delete(accessory.delete_a_accessory);
+
+    app.route('/accessory/:accessoryId/category')
+        .get(accessory.get_accessory_category);
 };

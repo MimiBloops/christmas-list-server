@@ -72,4 +72,17 @@ Accessory.remove = function (id, result) {
     });
 };
 
+Accessory.getAccessoryCategory = function getAccessoryCategory(accessoryId, result) {
+    sql.query("SELECT a.Name, a.Price, a.PurchaseLink, a.Image FROM Accessory AS a LEFT JOIN AccessoryCategory AS ac ON ac.CategoryId = ? WHERE a.Id = ac.AccessoryId", accessoryId, function (err, res) {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else {
+            result(null, res);
+
+        }
+    });
+};
+
 module.exports = Accessory;
