@@ -10,4 +10,7 @@ module.exports = function (app) {
         .get(client.read_a_client)
         .put(client.update_a_client)
         .delete(client.delete_a_client);
+
+    app.route('/client/:clientId/gift')
+        .get(client.list_gift_client);
 };

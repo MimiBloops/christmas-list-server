@@ -71,4 +71,17 @@ Client.remove = function (id, result) {
     });
 };
 
+Client.getClientGift = function getClientGift(clientId, result){
+    var sqlQuery = "SELECT g.Name, g.Price, g.PurchaseLink, g.Image FROM Gift AS g LEFT JOIN ClientGift AS cg ON cg.ClientId = ? WHERE g.Id = cg.GiftId";
+    sql.query(sqlQuery, clientId, function (err, res) {
+        if (err) {
+            console.log("error: ", err);
+            result(err, null);
+        }
+        else {
+            result(null, res);
+
+        }
+    });
+}
 module.exports = Client;

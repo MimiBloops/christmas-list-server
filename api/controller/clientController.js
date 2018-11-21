@@ -61,3 +61,14 @@ exports.delete_a_client = function (req, res) {
         res.json({ message: 'Client successfully deleted' });
     });
 };
+
+exports.list_gift_client = function (req, res) {
+    Client.getClientGift(req.params.clientId, function (err, client) {
+
+        console.log('controller')
+        if (err)
+            res.send(err);
+        console.log('res', client);
+        res.send(client);
+    });
+};
