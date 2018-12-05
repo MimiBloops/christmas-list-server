@@ -12,18 +12,18 @@
         "/gift": {
             "get": {
                 "x-swagger-router-controller": "giftController",
-                "operationId": "Gift/ApiV1getGift",
+                "operationId": "list_all_gift",
                 "tags": [
-                    "gift"
+                    "Gift"
                 ],
                 "description": "Get all gifts",
                 "responses": {}
             },
             "post": {
-                "x-swagger-router-controller": "home",
-                "operationId": "Gift/ApiV1postGift",
+                "x-swagger-router-controller": "giftController",
+                "operationId": "create_a_gift",
                 "tags": [
-                    "gift"
+                    "Gift"
                 ],
                 "description": "Create a gift",
                 "parameters": [
@@ -36,19 +36,19 @@
                     {
                         "name": "Price",
                         "in": "formData",
-                        "type": "decimal",
+                        "type": "string",
                         "required": true
                     },
                     {
                         "name": "PurchaseLink",
                         "in": "formData",
-                        "type": "text",
+                        "type": "string",
                         "required": true
                     },
                     {
                         "name": "Image",
                         "in": "formData",
-                        "type": "text",
+                        "type": "string",
                         "required": true
                     }
                 ],
@@ -58,9 +58,9 @@
         "/gift/{giftId}": {
             "get": {
                 "x-swagger-router-controller": "giftController",
-                "operationId": "Gift/ApiV1getGiftById",
+                "operationId": "read_a_gift",
                 "tags": [
-                    "gift"
+                    "Gift"
                 ],
                 "description": "Get gift informations from the Id",
                 "parameters": [
@@ -75,9 +75,9 @@
             },
             "put": {
                 "x-swagger-router-controller": "giftController",
-                "operationId": "Gift/ApiV1putGiftById",
+                "operationId": "update_a_gift",
                 "tags": [
-                    "gift"
+                    "Gift"
                 ],
                 "description": "Update gift information from Id",
                 "parameters": [
@@ -116,9 +116,9 @@
             },
             "delete" : {
                 "x-swagger-router-controller": "giftController",
-                "operationId": "Gift/ApiV1deleteGiftById",
+                "operationId": "delete_a_gift",
                 "tags": [
-                    "gift"
+                    "Gift"
                 ],
                 "description": "Delete gift from Id",
                 "parameters": [
@@ -137,7 +137,7 @@
                 "x-swagger-router-controller": "clientController",
                 "operationId": "list_all_client",
                 "tags": [
-                    "client"
+                    "Client"
                 ],
                 "description": "Get all clients",
                 "responses": {}
@@ -146,9 +146,338 @@
                 "x-swagger-router-controller": "clientController",
                 "operationId": "create_a_client",
                 "tags": [
-                    "client"
+                    "Client"
                 ],
                 "description": "Create a client",
+                "parameters": [
+                    {
+                        "name": "Lastname",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Firstname",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "Password",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/client/{clientId}" : {
+            "get": {
+                "x-swagger-router-controller": "clientController",
+                "operationId": "read_a_client",
+                "tags": [
+                    "Client"
+                ],
+                "description": "Get a client",
+                "responses": {}
+            },
+            "put": {
+                "x-swagger-router-controller": "clientController",
+                "operationId": "update_a_gift",
+                "tags": [
+                    "Client"
+                ],
+                "description": "Update client information with Id",
+                "parameters": [
+                    {
+                        "name": "Lastname",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Firstname",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Password",
+                        "in": "formData",
+                        "type": "decimal",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            },
+            "delete": {
+                "x-swagger-router-controller": "clientController",
+                "operationId": "delete_a_client",
+                "tags": [
+                    "Gift"
+                ],
+                "description": "Delete client with Id",
+                "parameters": [
+                    {
+                        "name": "GiftId",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/client/{clientId}/gift":{
+            "get": {
+                "x-swagger-router-controller": "clientController",
+                "operationId": "list_gift_client",
+                "tags": [
+                    "Client"
+                ],
+                "description": "List gift of a client",
+                "parameters": [
+                    {
+                        "name": "clientId",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/buyer": {
+            "get": {
+                "x-swagger-router-controller": "buyerController",
+                "operationId": "list_all_buyer",
+                "tags": [
+                    "Buyer"
+                ],
+                "description": "Get all buyers",
+                "parameters": [
+                    {
+                        "name": "GiftId",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {}
+            },
+            "post": {
+                "x-swagger-router-controller": "buyerController",
+                "operationId": "create_a_buyer",
+                "tags": [
+                    "Buyer"
+                ],
+                "description": "Create a Buyer",
+                "parameters": [
+                    {
+                        "name": "Lastname",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Firstname",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "Password",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/buyer/{buyerId}": {
+            "get": {
+                "x-swagger-router-controller": "buyerController",
+                "operationId": "read_a_buyer",
+                "tags": [
+                    "Buyer"
+                ],
+                "description": "Get a buyer",
+                "responses": {}
+            },
+            "put": {
+                "x-swagger-router-controller": "buyerController",
+                "operationId": "update_a_buyer",
+                "tags": [
+                    "Buyer"
+                ],
+                "description": "Update buyer information with Id",
+                "parameters": [
+                    {
+                        "name": "Lastname",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Firstname",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Password",
+                        "in": "formData",
+                        "type": "decimal",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            },
+            "delete": {
+                "x-swagger-router-controller": "buyerController",
+                "operationId": "delete_a_buyer",
+                "tags": [
+                    "Buyer"
+                ],
+                "description": "Delete buyer with Id",
+                "parameters": [
+                    {
+                        "name": "BuyerId",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/accessory": {
+            "get": {
+                "x-swagger-router-controller": "accessoryController",
+                "operationId": "list_all_accessory",
+                "tags": [
+                    "Accessory"
+                ],
+                "description": "Get all accessory",
+                "responses": {}
+            },
+            "post": {
+                "x-swagger-router-controller": "accessoryController",
+                "operationId": "create_a_accessory",
+                "tags": [
+                    "Accessory"
+                ],
+                "description": "Create a Buyer",
+                "parameters": [
+                    {
+                        "name": "Name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Price",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "PurchaseLink",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "Image",
+                        "in": "formData",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/accessory/{accessoryId}": {
+            "get": {
+                "x-swagger-router-controller": "accessoryController",
+                "operationId": "read_a_accessory",
+                "tags": [
+                    "Accessory"
+                ],
+                "description": "Get an accessory",
+                "responses": {}
+            },
+            "put": {
+                "x-swagger-router-controller": "accessoryController",
+                "operationId": "update_a_accessory",
+                "tags": [
+                    "Accessory"
+                ],
+                "description": "Update accessory information with Id",
+                "parameters": [
+                    {
+                        "name": "Name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Price",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "PurchaseLink",
+                        "in": "formData",
+                        "type": "decimal",
+                        "required": true
+                    },
+                    {
+                        "name": "Image",
+                        "in": "formData",
+                        "type": "decimal",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            },
+            "delete": {
+                "x-swagger-router-controller": "accessoryController",
+                "operationId": "delete_a_accessory",
+                "tags": [
+                    "Accessory"
+                ],
+                "description": "Delete accessory with Id",
+                "parameters": [
+                    {
+                        "name": "AccessoryId",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/accessory/{accessory}/category": {
+            "get": {
+                "x-swagger-router-controller": "accessoryController",
+                "operationId": "get_accessory_category",
+                "tags": [
+                    "Accessory"
+                ],
+                "description": "List category of an accessory",
+                "parameters": [
+                    {
+                        "name": "AccessoryId",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
                 "responses": {}
             }
         }
