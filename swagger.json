@@ -17,7 +17,17 @@
                     "Gift"
                 ],
                 "description": "Get all gifts",
-                "responses": {}
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Gift"
+                        }
+                    },
+                    "default": {
+                        "$ref": "#/definitions/responses/GlobalError"
+                    }
+                }
             },
             "post": {
                 "x-swagger-router-controller": "giftController",
@@ -52,7 +62,23 @@
                         "required": true
                     }
                 ],
-                "responses": {}
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Gift"
+                        }
+                    },
+                    "400": {
+                        "description" : "Gift object not valid",
+                        "schema": {
+                            "$ref": "#/definitions/Gift"
+                        }
+                    },
+                    "default": {
+                        "$ref": "#/definitions/responses/GlobalError"
+                    }
+                }
             }
         },
         "/gift/{giftId}": {
@@ -71,7 +97,17 @@
                         "type": "integer"
                     }
                 ],
-                "responses": {}
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "schema": {
+                            "$ref": "#/definitions/Gift"
+                        }
+                    },
+                    "default": {
+                        "$ref": "#/definitions/responses/GlobalError"
+                    }
+                }
             },
             "put": {
                 "x-swagger-router-controller": "giftController",
@@ -479,6 +515,57 @@
                     }
                 ],
                 "responses": {}
+            }
+        }
+    },
+    "definitions": {
+        "responses": {
+            "GlobalError": {
+                "description": "Execution error"
+            }
+        },
+        "Gift": {
+            "required": [
+                "Name",
+                "Price",
+                "PurchaseLink",
+                "Image"
+            ],
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "Price": {
+                    "type": "string"
+                },
+                "PurchaseLink": {
+                    "type": "string"
+                },
+                "Image": {
+                    "type": "string"
+                }
+            }
+        },
+        "Accessory": {
+            "required": [
+                "Name",
+                "Price",
+                "PurchaseLink",
+                "Image"
+            ],
+            "properties": {
+                "Name": {
+                    "type": "string"
+                },
+                "Price": {
+                    "type": "string"
+                },
+                "PurchaseLink": {
+                    "type": "string"
+                },
+                "Image": {
+                    "type": "string"
+                }
             }
         }
     }
