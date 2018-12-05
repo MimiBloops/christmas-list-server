@@ -1,0 +1,156 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Christmas list API",
+        "description": "Christmas list 2.0 API which provide all needed informations from the clients and buyers",
+        "version": "1.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/gift": {
+            "get": {
+                "x-swagger-router-controller": "giftController",
+                "operationId": "Gift/ApiV1getGift",
+                "tags": [
+                    "gift"
+                ],
+                "description": "Get all gifts",
+                "responses": {}
+            },
+            "post": {
+                "x-swagger-router-controller": "home",
+                "operationId": "Gift/ApiV1postGift",
+                "tags": [
+                    "gift"
+                ],
+                "description": "Create a gift",
+                "parameters": [
+                    {
+                        "name": "Name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Price",
+                        "in": "formData",
+                        "type": "decimal",
+                        "required": true
+                    },
+                    {
+                        "name": "PurchaseLink",
+                        "in": "formData",
+                        "type": "text",
+                        "required": true
+                    },
+                    {
+                        "name": "Image",
+                        "in": "formData",
+                        "type": "text",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/gift/{giftId}": {
+            "get": {
+                "x-swagger-router-controller": "giftController",
+                "operationId": "Gift/ApiV1getGiftById",
+                "tags": [
+                    "gift"
+                ],
+                "description": "Get gift informations from the Id",
+                "parameters": [
+                    {
+                        "name": "GiftId",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {}
+            },
+            "put": {
+                "x-swagger-router-controller": "giftController",
+                "operationId": "Gift/ApiV1putGiftById",
+                "tags": [
+                    "gift"
+                ],
+                "description": "Update gift information from Id",
+                "parameters": [
+                    {
+                        "name": "GiftId",
+                        "in": "formData",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "Name",
+                        "in": "formData",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Price",
+                        "in": "formData",
+                        "type": "decimal",
+                        "required": true
+                    },
+                    {
+                        "name": "PurchaseLink",
+                        "in": "formData",
+                        "type": "text",
+                        "required": true
+                    },
+                    {
+                        "name": "Image",
+                        "in": "formData",
+                        "type": "text",
+                        "required": true
+                    }
+                ],
+                "responses": {}
+            },
+            "delete" : {
+                "x-swagger-router-controller": "giftController",
+                "operationId": "Gift/ApiV1deleteGiftById",
+                "tags": [
+                    "gift"
+                ],
+                "description": "Delete gift from Id",
+                "parameters": [
+                    {
+                        "name": "GiftId",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {}
+            }
+        },
+        "/client": {
+            "get": {
+                "x-swagger-router-controller": "clientController",
+                "operationId": "list_all_client",
+                "tags": [
+                    "client"
+                ],
+                "description": "Get all clients",
+                "responses": {}
+            },
+            "post": {
+                "x-swagger-router-controller": "clientController",
+                "operationId": "create_a_client",
+                "tags": [
+                    "client"
+                ],
+                "description": "Create a client",
+                "responses": {}
+            }
+        }
+    }
+}

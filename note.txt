@@ -1,0 +1,14 @@
+CREATE SWAGGER PARAMETER ARRAY IN JSON :
+{
+            "name": "test",
+            "in": "formData",
+            "type": "array",
+            "collectionFormat": "multi",
+            "items": {
+              "type": "integer"
+             }
+          },
+
+          "parameters": [
+        { "name": "profileId", "in": "formData", "required": true, "type": "string" },
+        { "name": "file", "in": "formData", "type": "file", "required": "true" }],
